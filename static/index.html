@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogamiga</title>
+  <link rel="icon" type="image/png" href="/images/Yogamiga_Hackathon%20FemCoders.png">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="timer-card">
+        <p class="kicker">Capture Timer</p>
+        <p id="timerDisplay" class="timer-value">10</p>
+        <p id="timerStatus" class="timer-status">Open the webcam, then start the timer.</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="openCameraButton" class="primary">Open Webcam</button>
+        <button id="uploadImageButton" class="primary">Upload Image</button>
+        <button id="startTimerButton" class="secondary" disabled>Start 10s Timer</button>
+        <button id="resetButton" class="ghost" disabled>Reset</button>
+        <input id="imageUploadInput" type="file" accept="image/*" hidden>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <section class="panel camera-panel">
+        <div class="panel-heading">
+          <h1>Webcam Capture</h1>
+          <p id="cameraState" class="panel-subtitle">Camera idle</p>
+        </div>
+        <div class="viewer-frame">
+          <video id="webcam" autoplay playsinline muted></video>
+          <canvas id="captureCanvas" hidden></canvas>
+        </div>
+      </section>
+
+      <section class="panel result-panel">
+        <div class="panel-heading">
+          <h2>Analysis Output</h2>
+          <p id="resultStatus" class="panel-subtitle">No capture yet</p>
+        </div>
+
+        <div class="metric-group">
+          <div class="metric">
+            <span class="metric-label">Predicted Pose</span>
+            <span id="predictedPose" class="metric-value">--</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Recognition Confidence</span>
+            <span id="confidenceValue" class="metric-value">--</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Pose Score</span>
+            <span id="poseScoreValue" class="metric-value">--</span>
+          </div>
+        </div>
+
+        <div class="summary-card">
+          <h3>Summary</h3>
+          <p id="summaryText">The app will analyze the pose after the timer reaches zero.</p>
+        </div>
+
+        <div class="suggestions-card">
+          <h3>Suggestions for Correction</h3>
+          <ul id="suggestionsList" class="suggestions-list">
+            <li>Open the webcam to begin.</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>
